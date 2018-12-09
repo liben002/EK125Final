@@ -1,16 +1,25 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "mex.h"
+
 typedef struct linked
 {
     char country[30];
     int count;
     struct linked *next;
 } country_element;
+
 typedef country_element *elemptr;
+
+void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
+  main();
+  return;
+}
+
 int main()
 {
-    char country_name[30];
+    char country_name[256];
     int didadd;
 
     FILE *fp;
@@ -59,4 +68,5 @@ int main()
     }
     printf("%s %d\n", current->country, current->count);
     fclose(fp);
+	return 0;
 }

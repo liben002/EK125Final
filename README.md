@@ -1,17 +1,14 @@
-# EK125Final
-Steps:
+EK125Final
 
-C: 
-Read the ddos file for ip addresses, time, packet size etc.
-Run ip addresses through the api to get location
-Make a file to house everything
+This program takes in internet request data through a web scraper and uses an api to figure out what countries they are coming from.
+The purpose is to find out where the epicenters of attacks are located.
 
-Matlab: 
-Take the file and format into an array of structures
-Plot
+The data set was provided by https://www.impactcybertrust.org/ and can be accessed through the means below:
 
-Address  : <https://ant.isi.edu/tracedist/uTaXQxOkp/uTaXQxOkp.data>
-User     : oO2zmTmSh
-Password : XbcjhtKqD
+    	Address  : <https://ant.isi.edu/tracedist/uTaXQxOkp/uTaXQxOkp.data>
+    	User     : oO2zmTmSh
+	Password : XbcjhtKqD
 
-Website url: https://liben002.github.io/delete.html
+
+
+
