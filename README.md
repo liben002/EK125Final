@@ -7,9 +7,10 @@
 
 > The data set was provided by https://www.impactcybertrust.org/ and can be accessed through the means below:
 
-    	> Address  : <https://ant.isi.edu/tracedist/uTaXQxOkp/uTaXQxOkp.data>
-    	> User     : oO2zmTmSh
-	> Password : XbcjhtKqD
+    	Address  : <https://ant.isi.edu/tracedist/uTaXQxOkp/uTaXQxOkp.data>
+    	User     : oO2zmTmSh
+	Password : XbcjhtKqD
+	
 
 
 
