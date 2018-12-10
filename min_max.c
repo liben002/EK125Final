@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-// #include "mex.h"
+#include "mex.h"
 
 typedef struct linked
 {
@@ -12,11 +12,11 @@ typedef struct linked
 
 typedef country_element *elemptr;
 
-// void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
-// {
-//     main();
-//     return;
-// }
+ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+ {
+     main();
+     return;
+ }
 
 int main()
 {
