@@ -71,5 +71,5 @@ int main()
     printf("%s %d\n", current->country, current->count);
     printf("Max: %d", max);
     fclose(fp);
-	return 0;
+	return max;
 }
