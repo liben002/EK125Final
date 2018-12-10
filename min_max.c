@@ -72,6 +72,9 @@ int main()
     fw = fopen("country_data", "w");
     while (current->next != NULL)
     {
+        while(strcmp(current->country, "Private") == 0) {
+            current = current->next;        //skips all the "Private" ips
+        }
         if (max1->count < current->count)
         {
             max3 = max2;
