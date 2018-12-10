@@ -12,6 +12,7 @@ typedef struct linked
 
 typedef country_element *elemptr;
 
+%DO NOT TOUCH
  void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
  {
      main();
@@ -69,7 +70,7 @@ int main()
     max2->count = 0;
     max3->count = 0;
     FILE *fw;
-    fw = fopen("country_data", "w");
+    fw = fopen("country_data.dat", "w");
     while (current->next != NULL)
     {
         while(strcmp(current->country, "Private") == 0) {
