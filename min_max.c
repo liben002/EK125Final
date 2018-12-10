@@ -20,7 +20,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
 int main()
 {
     char country_name[256];
-    int didadd;
+    int didadd, max;
 
     FILE *fp;
     fp = fopen("countries.dat", "r");
@@ -61,12 +61,15 @@ int main()
         }
     }
     current = first; //sets current to point to the first element
+    max = current->count;
     while (current->next != NULL)
     {
+        if(max < current->count) max = current->count;
         printf("%s %d\n", current->country, current->count);
         current = current->next;
     }
     printf("%s %d\n", current->country, current->count);
+    printf("Max: %d", max);
     fclose(fp);
 	return 0;
 }
