@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "mex.h"
+// #include "mex.h"
 
 typedef struct linked
 {
@@ -12,26 +12,30 @@ typedef struct linked
 
 typedef country_element *elemptr;
 
-void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
-  main();
-  return;
-}
+// void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+// {
+//     main();
+//     return;
+// }
 
 int main()
 {
     char country_name[256];
-    int didadd, max;
+    int didadd;
+    elemptr max1 = (elemptr)malloc(sizeof(country_element));
+    elemptr max2 = (elemptr)malloc(sizeof(country_element));
+    elemptr max3 = (elemptr)malloc(sizeof(country_element));
 
-    FILE *fp;
-    fp = fopen("countries.dat", "r");
+    FILE *fr;
+    fr = fopen("countries.dat", "r");
 
     elemptr first = (elemptr)malloc(sizeof(country_element));
     elemptr current = first;
     first->count = 1;
     first->next = NULL;
-    fscanf(fp, "%s", &country_name);
+    fscanf(fr, "%s", &country_name);
     strcpy(first->country, country_name);          //Initializes first->country to the name of the first country in the file
-    while (fscanf(fp, "%s", &country_name) != EOF) //loops until EOF
+    while (fscanf(fr, "%s", &country_name) != EOF) //loops until EOF
     {
         didadd = 0;
         elemptr current = first;
@@ -61,15 +65,37 @@ int main()
         }
     }
     current = first; //sets current to point to the first element
-    max = current->count;
+    max1->count = 0;
+    max2->count = 0;
+    max3->count = 0;
+    FILE *fw;
+    fw = fopen("country_data", "w");
     while (current->next != NULL)
     {
-        if(max < current->count) max = current->count;
-        printf("%s %d\n", current->country, current->count);
+        if (max1->count < current->count)
+        {
+            max3 = max2;
+            max2 = max1;
+            max1 = current;
+        }
+        else if (max2->count < current->count)
+        {
+            max3 = max2;
+            max2 = current;
+        }
+        else if (max3->count < current->count)
+        {
+            max3 = current;
+        }
+
         current = current->next;
     }
-    printf("%s %d\n", current->country, current->count);
-    printf("Max: %d", max);
-    fclose(fp);
-	return max;
+    fprintf(fw, "%s %d\n%s %d\n%s %d\n", max1->country, max1->count, max2->country, max2->count, max3->country, max3->count);
+    fclose(fr);
+    fclose(fw);
+    printf("Max1: %s %d\n", max1->country, max1->count);
+    printf("Max2: %s %d\n", max2->country, max2->count);
+    printf("Max3: %s %d\n", max3->country, max3->count);
+
+    return 0;
 }
