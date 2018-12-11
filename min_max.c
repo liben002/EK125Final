@@ -71,6 +71,7 @@ int main()
     max3->count = 0;
     FILE *fw;
     fw = fopen("country_data.dat", "w");
+    // MAX FUNCTION CALLED FROM MATLAB
     while (current->next != NULL)
     {
         while(strcmp(current->country, "Private") == 0) {
